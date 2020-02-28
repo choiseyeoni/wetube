@@ -2,21 +2,21 @@
 const HOME = "/";
 const JOIN = "/join";
 const LOGIN = "/login";
-const LOGOUT = "/logout"; // 페이지가 아님. 로그아웃이 되면서 다른 페이지로 redirect 되는 것!
+const LOGOUT = "/logout";
 const SEARCH = "/search";
 
 // Users
-const USERS = "/users"; // 페이지가 아님
+const USERS = "/users";
 const USER_DETAIL = "/:id";
 const EDIT_PROFILE = "/edit-profile";
 const CHANGE_PASSWORD = "/change-password";
 
 // Videos
-const VIDEOS = "/videos"; // 페이지가 아님
+const VIDEOS = "/videos";
 const UPLOAD = "/upload";
 const VIDEO_DETAIL = "/:id";
 const EDIT_VIDEO = "/:id/edit";
-const DELETE_VIDEO = "/:id/delete"; // 페이지가 아님
+const DELETE_VIDEO = "/:id/delete";
 
 const routes = {
   home: HOME,
@@ -43,7 +43,13 @@ const routes = {
       return VIDEO_DETAIL;
     }
   },
-  editVideo: EDIT_VIDEO,
+  editVideo: id => {
+    if (id) {
+      return `/videos/${id}/edit`;
+    } else {
+      return EDIT_VIDEO;
+    }
+  },
   deleteVideo: DELETE_VIDEO
 };
 
